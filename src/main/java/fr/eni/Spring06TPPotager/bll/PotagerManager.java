@@ -1,7 +1,5 @@
 package fr.eni.Spring06TPPotager.bll;
 
-import java.util.ArrayList;
-
 import fr.eni.Spring06TPPotager.bo.Potager;
 
 public interface PotagerManager {
