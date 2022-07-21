@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import fr.eni.Spring06TPPotager.bll.PotagerManager;
+import fr.eni.Spring06TPPotager.bo.Carre;
 import fr.eni.Spring06TPPotager.bo.Potager;
 import fr.eni.Spring06TPPotager.dal.PotagerDao;
 
@@ -19,35 +21,31 @@ public class Spring06TpPotagerApplication implements CommandLineRunner {
 	}
 
 	@Autowired
-	private PotagerDao potagerDao;
+	private PotagerManager potagerManager;
 
 	@Override
 	public void run(String... args) throws Exception {
+
+//		Création de potagers		
 		Potager romainPotager = new Potager("ergue-armel", "Romain", 9, "Quimper");
 		Potager phileasPotager = new Potager("Lesquidic", "Perron", 10, "Gouesnach");
-
+//		Création de carrés
+		Carre carre1 = new Carre ("potagerPhileas", 1, "argileux", "ombre");
+		
+//		Vérification des BO
 		System.out.println(romainPotager);
+		System.out.println(carre1);
 
 //		Ajout en base de données
-		potagerDao.save(romainPotager);
-		potagerDao.save(phileasPotager);
+		potagerManager.creerPotager(romainPotager);
+		potagerManager.creerPotager(phileasPotager);
 		System.out.println("");
-		System.out.println("Affichage" + " FindAll");
-		
-//		OneLiner foreach()
-		potagerDao.findAll().forEach(System.out::println);
 
-		ArrayList<Potager> listePotagers = (ArrayList<Potager>) potagerDao.findAll();
-//		Foreach() classique
-		for (Potager potagerTemp : listePotagers) {
-			System.out.println(potagerTemp);
-		}
+//  	Trouver et afficher la liste des potagers en base de données
+		System.out.println("Affichage FindAll");
+		potagerManager.listerPotagers();
+
+	
 		
-//		For loop
-		for (int i = 0; i < listePotagers.size();i++) {
-			Potager potagerTemp = listePotagers.get(i);
-			System.out.println(potagerTemp);
-		}
 	}
-
 }
