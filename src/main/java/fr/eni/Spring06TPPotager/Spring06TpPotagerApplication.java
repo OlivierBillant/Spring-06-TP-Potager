@@ -1,5 +1,6 @@
 package fr.eni.Spring06TPPotager;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,10 @@ import fr.eni.Spring06TPPotager.bll.CarreManager;
 import fr.eni.Spring06TPPotager.bll.PlanteManager;
 import fr.eni.Spring06TPPotager.bll.PotagerManager;
 import fr.eni.Spring06TPPotager.bo.Carre;
+import fr.eni.Spring06TPPotager.bo.Plantation;
 import fr.eni.Spring06TPPotager.bo.Plante;
 import fr.eni.Spring06TPPotager.bo.Potager;
+import fr.eni.Spring06TPPotager.dal.PlantationDao;
 
 @SpringBootApplication
 public class Spring06TpPotagerApplication implements CommandLineRunner {
@@ -28,6 +31,9 @@ public class Spring06TpPotagerApplication implements CommandLineRunner {
 	@Autowired
 	private PlanteManager planteManager;
 
+	@Autowired
+	private PlantationDao plantationDao;
+
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -41,6 +47,15 @@ public class Spring06TpPotagerApplication implements CommandLineRunner {
 //		Création de plantes
 		Plante plante1 = new Plante("rose", "fleur", "a piquant", "0,5");
 		Plante plante2 = new Plante("lilas", "fleur", "douce", "0,3");
+
+//		Creation de plantations
+		Plantation plantationRose = new Plantation(LocalDate.now(), LocalDate.now().plusMonths(3), 1);
+		plantationRose.setPlante(plante1);
+		plantationRose.setCarre(carre1);
+		Plantation plantationLilas = new Plantation(LocalDate.now(), LocalDate.now().plusMonths(3), 1);
+		plantationLilas.setPlante(plante2);
+		plantationLilas.setCarre(carre1);
+
 //		Vérification des BO
 		System.out.println("-----------------------------------------------------");
 		System.out.println("---------------VERIFICATION DES BO-------------------");
@@ -53,16 +68,20 @@ public class Spring06TpPotagerApplication implements CommandLineRunner {
 		potagerManager.creerPotager(romainPotager);
 		potagerManager.creerPotager(phileasPotager);
 		System.out.println("");
-
+		
 //		Ajout en base de données Carrés
 		carreManagerInst.creerCarre(carre1);
 		carreManagerInst.creerCarre(carre2);
 		carreManagerInst.creerCarre(carre3);
 		System.out.println("");
-
+		
 //		Ajout en base de données Plante	
 		planteManager.creerPlante(plante1);
 		planteManager.creerPlante(plante2);
+
+//		Ajout en base de données Plantations	
+		plantationDao.save(plantationRose);
+		plantationDao.save(plantationLilas);
 
 //  	Trouver et afficher la liste des potagers en base de données
 		System.out.println("-----------------------------------------------------");
@@ -81,5 +100,12 @@ public class Spring06TpPotagerApplication implements CommandLineRunner {
 		System.out.println("-----------Affichage des plantes en BDD--------------");
 		System.out.println("-----------------------------------------------------");
 		planteManager.listerPlante();
+
+//		Requetes JPQL
+		System.out.println("-----------------------------------------------------");
+		System.out.println("-----------Affichage des plantes en du potager de phileas--------------");
+		System.out.println("-----------------------------------------------------");
+		plantationDao.plantesOfPotager(phileasPotager).forEach(System.out::println);
+
 	}
 }

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class PlanteDansCarre {
+public class Plantation {
 	@Id
 	@GeneratedValue
 	private Integer idPlanteDansCarre;
@@ -28,7 +28,7 @@ public class PlanteDansCarre {
 	private LocalDate dateRecolte;
 	private Integer quantite;
 	
-	public PlanteDansCarre(LocalDate datePlantation, LocalDate dateRecolte, Integer quantite) {
+	public Plantation(LocalDate datePlantation, LocalDate dateRecolte, Integer quantite) {
 		super();
 		this.datePlantation = datePlantation;
 		this.dateRecolte = dateRecolte;
