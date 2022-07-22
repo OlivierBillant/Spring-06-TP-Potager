@@ -1,8 +1,12 @@
 package fr.eni.Spring06TPPotager.bo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +23,10 @@ public class Plante {
 	private String type;
 	private String variete;
 	private String surfaceOccuppee;
+	
+	@ManyToMany
+	private Set<Carre> listeCarres = new HashSet<Carre>();
+	
 	public Plante(String nom, String type, String variete, String surfaceOccuppee) {
 		super();
 		this.nom = nom;

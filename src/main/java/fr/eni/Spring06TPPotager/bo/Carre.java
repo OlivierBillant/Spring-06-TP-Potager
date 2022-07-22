@@ -1,8 +1,13 @@
 package fr.eni.Spring06TPPotager.bo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,12 +20,16 @@ public class Carre {
 	@Id
 	@GeneratedValue
 	private Integer idCarre;
-	private String potager;
 	private Integer surface;
 	private String typeDeSol;
-	private	String typeDexposition;
-	
-	public Carre(String potager, Integer surface, String typeDeSol, String typeDexposition) {
+	private String typeDexposition;
+	@ManyToOne
+	private Potager potager;
+
+	@ManyToMany
+	private Set<Plante> listePlantes = new HashSet<Plante>();
+
+	public Carre(Potager potager, Integer surface, String typeDeSol, String typeDexposition) {
 		super();
 		this.potager = potager;
 		this.surface = surface;
@@ -33,7 +42,5 @@ public class Carre {
 		return "Carre [potager=" + potager + ", surface=" + surface + ", typeDeSol=" + typeDeSol + ", typeDexposition="
 				+ typeDexposition + "]";
 	}
-	
-	
-	
+
 }

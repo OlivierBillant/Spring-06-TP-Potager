@@ -35,9 +35,9 @@ public class Spring06TpPotagerApplication implements CommandLineRunner {
 		Potager romainPotager = new Potager("ergue-armel", "Romain", 9, "Quimper");
 		Potager phileasPotager = new Potager("Lesquidic", "Perron", 10, "Gouesnach");
 //		Création de carrés
-		Carre carre1 = new Carre("potagerPhileas", 1, "argileux", "ombre");
-		Carre carre2 = new Carre("potagerPhileas", 1, "argileux", "ombre");
-		Carre carre3 = new Carre("potagerPhileas", 1, "argileux", "ombre");
+		Carre carre1 = new Carre(phileasPotager, 1, "argileux", "ombre");
+		Carre carre2 = new Carre(phileasPotager, 1, "argileux", "ombre");
+		Carre carre3 = new Carre(phileasPotager, 1, "argileux", "ombre");
 //		Création de plantes
 		Plante plante1 = new Plante("rose", "fleur", "a piquant", "0,5");
 		Plante plante2 = new Plante("lilas", "fleur", "douce", "0,3");
