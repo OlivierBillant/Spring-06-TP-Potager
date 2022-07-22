@@ -26,8 +26,8 @@ public class Carre {
 	@ManyToOne
 	private Potager potager;
 
-	@ManyToMany
-	private Set<Plante> listePlantes = new HashSet<Plante>();
+//	@ManyToMany(mappedBy = "listeCarres")
+//	private Set<Plante> listePlantes = new HashSet<Plante>();
 
 	public Carre(Potager potager, Integer surface, String typeDeSol, String typeDexposition) {
 		super();

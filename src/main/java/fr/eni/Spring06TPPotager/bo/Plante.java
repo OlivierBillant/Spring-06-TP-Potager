@@ -24,8 +24,8 @@ public class Plante {
 	private String variete;
 	private String surfaceOccuppee;
 	
-	@ManyToMany
-	private Set<Carre> listeCarres = new HashSet<Carre>();
+//	@ManyToMany
+//	private Set<Carre> listeCarres = new HashSet<Carre>();
 	
 	public Plante(String nom, String type, String variete, String surfaceOccuppee) {
 		super();
