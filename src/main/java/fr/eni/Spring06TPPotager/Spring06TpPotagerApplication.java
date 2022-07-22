@@ -90,21 +90,9 @@ public class Spring06TpPotagerApplication implements CommandLineRunner {
 //		Création de liste de plantes
 		ArrayList<Plante> listePlante = new ArrayList<Plante>();
 		listePlante = (ArrayList<Plante>) planteDaoInst.findAll();
-		
-		
-		
-////		Création de liste de carrés
-//		ArrayList<Carre> listeCarre = new ArrayList<Carre>();
-//		listeCarre = (ArrayList<Carre>) carreDaoInst.findAll();
-//
-////		Boucle pour afficher liste de carrés
-//		for (int i = 0; i < listeCarre.size(); i++) {
-//			Carre carreTemp = listeCarre.get(i);
-//			System.out.println(carreTemp);
-//		}
-		
-		
-		
-		
+		for (int i = 0; i < listePlante.size(); i++) {
+			Plante planteTemp = listePlante.get(i);
+			System.out.println(planteTemp);
+		}
 	}
 }
