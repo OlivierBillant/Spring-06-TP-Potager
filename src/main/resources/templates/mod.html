@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Modification d'une passion</title>
+</head>
+<body>
+<h1>Modification</h1>
+<form th:action="@{/passion/mod/{id}(id=${passion.idPassion})}" th:object="${passion}" method="post">
+	<label for="nom">Nom : </label>
+	<input type="text" th:field="*{nom}" id="nom"/>
+	<span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"/>
+	<br>
+	<label for="description">Description : </label>
+	<input type="text" th:field="*{description}" id="description"/>
+	<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
+	<br>
+	<input type="submit" value="valider"/>
+</form>
+</body>
+</html>

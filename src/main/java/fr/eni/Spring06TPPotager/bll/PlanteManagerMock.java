@@ -28,4 +28,9 @@ public class PlanteManagerMock implements PlanteManager {
 			System.out.println(planteTemp);
 		}
 	}
+
+	@Override
+	public ArrayList<Plante> getPlantes() {
+		return (ArrayList<Plante>) planteDaoInst.findAll();
+	}
 }
