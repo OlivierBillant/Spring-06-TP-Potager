@@ -1,8 +1,13 @@
 package fr.eni.Spring06TPPotager.bo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,8 +24,8 @@ public class Potager {
 	private Integer surface;
 	private String ville;
 
-//	@OneToMany(mappedBy = "potager")
-//	private Set<Carre> listeCarre = new HashSet<Carre>();
+	@OneToMany(mappedBy = "potager")
+	private Set<Carre> listeCarre = new HashSet<Carre>();
 	
 	public Potager(String localisation, String nom, Integer surface, String ville) {
 		super();
