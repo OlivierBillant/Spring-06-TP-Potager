@@ -61,7 +61,7 @@ public class PlanteController {
 	}
 	
 	@PostMapping("/mod/{id}") 
-	public String modeValidPassion(@PathVariable("id") Integer id,@Valid Plante plante, BindingResult errors, Model model) {
+	public String modeValidPlante(@PathVariable("id") Integer id,@Valid Plante plante, BindingResult errors, Model model) {
 		if(errors.hasErrors()) {
 			return "mod";
 		}

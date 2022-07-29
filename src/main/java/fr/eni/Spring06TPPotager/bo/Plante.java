@@ -2,12 +2,11 @@ package fr.eni.Spring06TPPotager.bo;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
+import javax.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,6 +20,7 @@ public class Plante {
 	private Integer idPlante;
 	private String nom;
 	private String type;
+	@NotBlank
 	private String variete;
 	private String surfaceOccuppee;
 	

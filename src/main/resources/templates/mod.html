@@ -16,15 +16,15 @@
 		<span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" />
 		<br>
 		<label for="type">Type : </label>
-		<input type="type" th:field="*{type}" id="type" />
+		<input type="text" th:field="*{type}" id="type" />
 		<span th:if="${#fields.hasErrors('type')}" th:errors="*{type}" />
 		<br>
 		<label for="variete">Variété : </label>
-		<input type="variete" th:field="*{variete}" id="variete" />
+		<input type="text" th:field="*{variete}" id="variete" />
 		<span th:if="${#fields.hasErrors('variete')}" th:errors="*{variete}" />
 		<br>
 		<label for="surfaceOccuppee">Surface ocucpée : </label>
-		<input type="surfaceOccuppee" th:field="*{surfaceOccuppee}" id="surfaceOccuppee" />
+		<input type="text" th:field="*{surfaceOccuppee}" id="surfaceOccuppee" />
 		<span th:if="${#fields.hasErrors('surfaceOccuppee')}" th:errors="*{surfaceOccuppee}" />
 		<br>
 		<input class="btn btn-success" type="submit" value="valider" />
