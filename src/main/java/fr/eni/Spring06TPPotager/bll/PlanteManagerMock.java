@@ -1,10 +1,8 @@
 package fr.eni.Spring06TPPotager.bll;
 
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import fr.eni.Spring06TPPotager.bo.Plante;
 import fr.eni.Spring06TPPotager.dal.PlanteDao;
 
@@ -14,8 +12,8 @@ public class PlanteManagerMock implements PlanteManager {
 	private PlanteDao planteDaoInst;
 
 	@Override
-	public void creerPlante(Plante plante) {
-		planteDaoInst.save(plante);
+	public void creerPlante(Plante plante) throws PlanteException {
+		addOrModPlante(plante);
 	}
 
 	@Override
@@ -33,4 +31,23 @@ public class PlanteManagerMock implements PlanteManager {
 	public ArrayList<Plante> getPlantes() {
 		return (ArrayList<Plante>) planteDaoInst.findAll();
 	}
+
+	private void addOrModPlante(Plante plante) throws PlanteException {
+		if ("Liere".equals(plante.getNom())) {
+			throw new PlanteException("On ne plante pas de lière espèce de malade");
+		}
+		planteDaoInst.save(plante);
+	}
+
+	@Override
+	public void supprimerUnePlanteId(Integer id) {
+		planteDaoInst.deleteById(id);		
+	}
+
+	@Override
+	public Plante getPlante(Integer id) {
+		return planteDaoInst.findById(id).orElse(null);
+	}
+	
+	
 }
