@@ -1,17 +1,25 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Liste des plantes</title>
+	<meta charset="ISO-8859-1">
+	<title>Liste des plantes</title>
 </head>
+
 <body>
-<H1>Liste des plantes</H1>
-<ul>
-	<li th:each="plante : ${list}">
-		<span th:text="${plante.nom}" />
-		<span th:text="${plante.type}" />
-		<span th:text="${plante.variete}" />
-	</li>
-</ul>
- </body>
+	<H1>Liste des plantes</H1>
+	<ul th:each="plante : ${list}">
+		<li>
+			<span>Nom de la plante : </span><span th:text="${plante.nom}" />
+		</li>
+		<li>
+			<span>Type de la plante : </span><span th:text="${plante.type}" />
+		</li>
+		<li>
+			<span>Variété de la plante : </span><span th:text="${plante.variete}" />
+		</li>
+		<br />
+	</ul>
+</body>
+
 </html>
